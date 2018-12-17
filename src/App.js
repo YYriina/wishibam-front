@@ -33,12 +33,14 @@ class Form extends Component {
     const { firstName, lastName, email, company, phone, subject, message } = this.state;
 
     if(firstName !== "" && lastName !== "" && email !== "" && company !== "" && phone !== "" && subject !== "" && message !== ""){
-      await axios({
+      axios({
         method: 'post',
         url: 'http://localhost:3131/profil/',
         data: this.state
+      }).then((response)=>{
+        console.log(response)
+        window.location.reload();
       });
-      window.location.reload();
     }
     else{
       alert('all the inputs are required!')
